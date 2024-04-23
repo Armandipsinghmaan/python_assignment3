@@ -1,12 +1,11 @@
-#This program is about the LIBRARY MANAGEMENT SYSTEM
-# name of the project maker 
+#This is the Submission for the Library Managment System 
+# The group members are 
 # Armaandip singh maan 
-# Manveer singh jandoo
+# Manveer singh jandoo 
 # Bhartinder singh 
-# class - Object-Oriented Programming 
 
-import csv
-import os.path
+import csv  # Importing the csv module for handling CSV files
+import os.path  # Importing the os.path module for file path operations
 
 # Define a Book class to represent a book object
 class Book:
@@ -33,12 +32,8 @@ class Book:
 
     # Get the name of the genre based on its ID
     def get_genre_name(self):
-        genre_names = {
-            0: "Romance",
-            1: "Mystery",
-            # Define genre names for different IDs
-            # ...
-        }
+        genre_names = {0: "Romance", 1: "Mystery", 2: "Science Fiction", 3: "Thriller", 4: "Young Adult",
+                       5: "Children's fiction", 6: "Self-help", 7: "Fantasy", 8: "Historical Fiction", 9: "Poetry"}
         return genre_names.get(self.__genre, "Unknown Genre")
 
     # Get the availability status of the book
@@ -51,8 +46,6 @@ class Book:
 
     def set_title(self, title):
         self.__title = title
-
-    # Define similar setters for author, genre, and available
 
     # Method to mark the book as borrowed
     def borrow_it(self):
@@ -70,18 +63,20 @@ class Book:
         else:
             return False
         
-#Bhartinder singh 
     # Static method to load books from a CSV file
     @staticmethod
     def load_from_csv(filename):
+        # Check if the file exists
         if not os.path.exists(filename):
             print("File not found. Please try again.")
             return None
         books = []
+        # Open the CSV file and read its contents
         with open(filename, newline='') as csvfile:
             book_reader = csv.reader(csvfile, delimiter=',')
             next(book_reader)  # Skip the header row
             for row in book_reader:
+                # Extract data from each row
                 isbn, title, author, genre, availability = row
                 # Convert genre ID to integer
                 try:
@@ -90,7 +85,7 @@ class Book:
                     genre_id = -1  # Default value for unknown genre
                 # Convert availability to boolean
                 is_available = availability.strip().lower() in ['true', '1', 't']
-                # Create a new Book object and append to the list
+                # Create a new Book object and append to the list of books
                 new_book = Book(isbn.strip(), title.strip(), author.strip(), genre_id, is_available)
                 books.append(new_book)
         return books
@@ -137,7 +132,6 @@ def main():
             print("Book catalog has been loaded.")
             break
 
-#Manveer singh jandoo 
     # Main menu loop
     while True:
         print("\nReader's Guild Library - Main Menu")
@@ -175,10 +169,6 @@ def main():
             # Exit the system
             print("\n-- Exit the system --")
             print("Good Bye!")
-            break
-        elif choice == '2130':  # Secret code to redirect to library menu
-            import library_app
-            library_app.main()
             break
         else:
             print("Invalid option")

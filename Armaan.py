@@ -1,12 +1,11 @@
-#This program is about the LIBRARY MANAGEMENT SYSTEM
-# name of the project maker 
+#This is the Submission for the Library Managment System 
+# The group members are 
 # Armaandip singh maan 
-# Manveer singh jandoo
+# Manveer singh jandoo 
 # Bhartinder singh 
-# class - Object-Oriented Programming 
 
-import csv
-import os.path
+import csv  # Importing the csv module for handling CSV files
+import os.path  # Importing the os.path module for file path operations
 
 # Define a Book class to represent a book object
 class Book:
@@ -33,12 +32,8 @@ class Book:
 
     # Get the name of the genre based on its ID
     def get_genre_name(self):
-        genre_names = {
-            0: "Romance",
-            1: "Mystery",
-            # Define genre names for different IDs
-            # ...
-        }
+        genre_names = {0: "Romance", 1: "Mystery", 2: "Science Fiction", 3: "Thriller", 4: "Young Adult",
+                       5: "Children's fiction", 6: "Self-help", 7: "Fantasy", 8: "Historical Fiction", 9: "Poetry"}
         return genre_names.get(self.__genre, "Unknown Genre")
 
     # Get the availability status of the book
@@ -51,8 +46,6 @@ class Book:
 
     def set_title(self, title):
         self.__title = title
-
-    # Define similar setters for author, genre, and available
 
     # Method to mark the book as borrowed
     def borrow_it(self):
@@ -69,4 +62,3 @@ class Book:
             return True
         else:
             return False
-        
